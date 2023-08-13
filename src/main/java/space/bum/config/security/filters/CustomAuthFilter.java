@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import lombok.AllArgsConstructor;
+import space.bum.config.security.authen.CustomAuthen;
 import space.bum.config.security.managers.CustomAuthenManager;
 
 @Component
@@ -27,6 +28,9 @@ public class CustomAuthFilter extends OncePerRequestFilter {
 			FilterChain filterChain) throws ServletException, IOException {
 		
 		// 1. 아직 인증안된 authen 객체 생성
+		String key = String.valueOf(request.getHeader("key"));
+		CustomAuthen ca = new CustomAuthen(false, key);
+		
 		// 2. authen 객체를 manager 에 위임
 		// 3. manager로 부터 authen 돌려받다
 		// 4. 인증 성공 때, 요청을 다음 필터로 인계

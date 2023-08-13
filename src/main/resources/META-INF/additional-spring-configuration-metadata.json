@@ -1,0 +1,7 @@
+{"properties": [
+  {
+    "name": "our.very.secret.key",
+    "type": "java.lang.String",
+    "description": "the key of custom authentication"
+  }
+]}

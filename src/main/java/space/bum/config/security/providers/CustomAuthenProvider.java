@@ -5,6 +5,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
 
+import space.bum.config.security.authen.CustomAuthen;
+
 @Component
 public class CustomAuthenProvider implements AuthenticationProvider {
 
@@ -17,8 +19,7 @@ public class CustomAuthenProvider implements AuthenticationProvider {
 
 	@Override
 	public boolean supports(Class<?> authentication) {
-		// TODO Auto-generated method stub
-		return false;
+		return CustomAuthen.class.equals(authentication);
 	}
 
 }

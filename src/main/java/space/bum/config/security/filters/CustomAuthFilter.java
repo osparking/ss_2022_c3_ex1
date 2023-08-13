@@ -35,7 +35,7 @@ public class CustomAuthFilter extends OncePerRequestFilter {
 		// 3. manager로 부터 authen 돌려받다
 		// 4. 인증 성공 때, 요청을 다음 필터로 인계
 		
-		var a = customAuthenManager.authenticate(null);
+		var a = customAuthenManager.authenticate(ca);
 		
 		if (a.isAuthenticated()) { // 인증 성공
 			SecurityContextHolder.getContext().setAuthentication(a);

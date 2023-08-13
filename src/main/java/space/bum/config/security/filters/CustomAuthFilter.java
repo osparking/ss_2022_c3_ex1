@@ -10,9 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import lombok.AllArgsConstructor;
+
 @Component
+@AllArgsConstructor
 public class CustomAuthFilter extends OncePerRequestFilter {
 
+	private final CustomAuthFilter customAuthFilter;
+	
 	@Override
 	protected void doFilterInternal(
 			HttpServletRequest request,

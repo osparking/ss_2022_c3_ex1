@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -30,6 +31,12 @@ public class CustomAuthFilter extends OncePerRequestFilter {
 		// 3. manager로 부터 authen 돌려받다
 		// 4. 인증 성공 때, 요청을 다음 필터로 인계
 		
-		filterChain.doFilter(request, response); // 인증 작동 때만
+		var a = customAuthenManager.authenticate(null);
+		
+		if (a.isAuthenticated()) { // 인증 성공
+			SecurityContextHolder.getContext().setAuthentication(a);
+			filterChain.doFilter(request, response); 
+		}
+		
 	}
 }

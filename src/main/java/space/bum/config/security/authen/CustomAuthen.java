@@ -6,23 +6,25 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @AllArgsConstructor
+@Setter
+@Getter
 public class CustomAuthen implements Authentication{
 
 	private final boolean authenticated;
+	private final String key;
 	
 	@Override
 	public boolean isAuthenticated() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void setAuthenticated(boolean isAuthenticated)
 			throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
